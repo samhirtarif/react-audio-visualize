@@ -1,3 +1,13 @@
+interface CustomCanvasRenderingContext2D extends CanvasRenderingContext2D {
+  roundRect: (
+    x: number,
+    y: number,
+    w: number,
+    h: number,
+    radius: number
+  ) => void;
+}
+
 export const calculateBarData = (
   frequencyData: Uint8Array,
   width: number,
@@ -35,7 +45,7 @@ export const draw = (
 ): void => {
   const amp = canvas.height / 2;
 
-  const ctx = canvas.getContext("2d");
+  const ctx = canvas.getContext("2d") as CustomCanvasRenderingContext2D;
   if (!ctx) return;
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -54,8 +64,6 @@ export const draw = (
     const h = dp || 1;
 
     ctx.beginPath();
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
     ctx.roundRect(x, y, w, h, 50);
     ctx.fill();
   });
