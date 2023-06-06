@@ -37,7 +37,7 @@ export interface Props {
    */
   barColor?: string;
   /**
-   * An unsigned integer, representing the window size of the FFT, given in number of samples. 
+   * An unsigned integer, representing the window size of the FFT, given in number of samples.
    * A higher value will result in more details in the frequency domain but fewer details in the amplitude domain.
    * For more details {@link https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/fftSize MDN AnalyserNode: fftSize property}
    * Default: `1024`
@@ -68,7 +68,7 @@ export interface Props {
   minDecibels?: number;
   /**
    * A double within the range 0 to 1 (0 meaning no time averaging). The default value is 0.8.
-   * If 0 is set, there is no averaging done, whereas a value of 1 means "overlap the previous and current buffer quite a lot while computing the value", 
+   * If 0 is set, there is no averaging done, whereas a value of 1 means "overlap the previous and current buffer quite a lot while computing the value",
    * which essentially smooths the changes across
    * For more details {@link https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/smoothingTimeConstant MDN AnalyserNode: smoothingTimeConstant property}
    * Default: `0.4`
