@@ -1,7 +1,7 @@
 {
   "name": "react-audio-visualize",
   "private": false,
-  "version": "0.0.3",
+  "version": "1.0.0",
   "license": "MIT",
   "author": "",
   "repository": {
@@ -24,9 +24,7 @@
     "visualization"
   ],
   "files": [
-    "dist",
-    "README.md",
-    "assets"
+    "dist"
   ],
   "main": "./dist/react-audio-visualize.umd.js",
   "module": "./dist/react-audio-visualize.es.js",
