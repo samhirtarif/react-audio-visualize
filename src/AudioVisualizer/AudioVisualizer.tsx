@@ -7,7 +7,7 @@ interface Props {
   /**
    * Audio blob to visualize
    */
-  blob?: Blob;
+  blob: Blob;
   /**
    * Width of the visualizer
    */

@@ -1,17 +1,32 @@
 {
   "name": "react-audio-visualize",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.0.3",
   "license": "MIT",
   "author": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/samhirtarif/"
+    "url": "https://github.com/samhirtarif/react-audio-visualize.git"
   },
-  "keywords": [],
+  "keywords": [
+    "audio",
+    "visualize",
+    "visualise",
+    "visualizer",
+    "visualiser",
+    "audio visualiser",
+    "audio visualizer",
+    "audio visualize",
+    "audio visualise",
+    "audio waveform",
+    "waveform",
+    "audio visualization",
+    "visualization"
+  ],
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "assets"
   ],
   "main": "./dist/react-audio-visualize.umd.js",
   "module": "./dist/react-audio-visualize.es.js",
@@ -29,10 +44,6 @@
     "lint": "eslint src/**/*.ts{,x}",
     "lint:fix": "npm run lint -- --fix"
   },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
   "devDependencies": {
     "@types/node": "^20.2.1",
     "@types/react": "^18.0.28",
@@ -49,8 +60,14 @@
     "eslint-plugin-react-refresh": "^0.3.4",
     "path": "^0.12.7",
     "prettier": "^2.8.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "typescript": "^5.0.2",
     "vite": "^4.3.2",
     "vite-plugin-dts": "^2.3.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
