@@ -1,7 +1,7 @@
 {
   "name": "react-audio-visualize",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT",
   "author": "",
   "repository": {
@@ -65,7 +65,7 @@
     "vite-plugin-dts": "^2.3.0"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": ">=16.2.0",
+    "react-dom": ">=16.2.0"
   }
 }
