@@ -16,6 +16,7 @@ import { AudioVisualizer } from 'react-audio-visualize';
 
 const Visualizer = () => {
   const [blob, setBlob] = useState<Blob>();
+  const visualizerRef = useRef<HTMLCanvasElement>(null)
 
   // set blob somewhere in code
 
@@ -23,6 +24,7 @@ const Visualizer = () => {
     <div>
       {blob && (
         <AudioVisualizer
+          ref={visualizerRef}
           blob={blob}
           width={500}
           height={75}
@@ -49,6 +51,7 @@ const Visualizer = () => {
 | **`barPlayedColor`** |  Color for the bars that have been played | `"rgb(160, 198, 255)""` | Yes |
 | **`currentTime`** |  Current time stamp till which the audio blob has been played. Visualized bars that fall before the current time will have `barPlayerColor`, while that ones that fall after will have `barColor` | N/A | Yes |
 | **`style`** |  Custom styles that can be passed to the visualization canvas | N/A | Yes |
+| **`ref`** |  A `ForwardedRef` for the `HTMLCanvasElement` | N/A | Yes |
 
 ---
 
