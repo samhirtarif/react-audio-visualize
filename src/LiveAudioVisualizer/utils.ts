@@ -64,10 +64,12 @@ export const draw = (
     const h = dp || 1;
 
     ctx.beginPath();
-    if (ctx.roundRect) { // making sure roundRect is supported by the browser
+    if (ctx.roundRect) {
+      // making sure roundRect is supported by the browser
       ctx.roundRect(x, y, w, h, 50);
       ctx.fill();
-    } else { // fallback for browsers that do not support roundRect
+    } else {
+      // fallback for browsers that do not support roundRect
       ctx.fillRect(x, y, w, h);
     }
   });
