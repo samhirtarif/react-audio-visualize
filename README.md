@@ -11,7 +11,7 @@ npm install react-audio-visualize
 ![screenshot](./assets/AudioVisualizer.png)
 
 ```js
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { AudioVisualizer } from 'react-audio-visualize';
 
 const Visualizer = () => {
