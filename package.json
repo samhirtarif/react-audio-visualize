@@ -33,7 +33,8 @@
   "exports": {
     ".": {
       "import": "./dist/react-audio-visualize.es.js",
-      "require": "./dist/react-audio-visualize.umd.js"
+      "require": "./dist/react-audio-visualize.umd.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "scripts": {
