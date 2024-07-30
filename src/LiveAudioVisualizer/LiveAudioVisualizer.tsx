@@ -107,9 +107,7 @@ const LiveAudioVisualizer: (props: Props) => ReactElement = ({
   }, [mediaRecorder.stream]);
 
   useEffect(() => {
-    if (analyser && mediaRecorder.state === "recording") {
       report();
-    }
   }, [analyser, mediaRecorder.state]);
 
   const report = useCallback(() => {
@@ -123,13 +121,14 @@ const LiveAudioVisualizer: (props: Props) => ReactElement = ({
       requestAnimationFrame(report);
     } else if (mediaRecorder.state === "paused") {
       processFrequencyData(data);
-    } else if (
-      mediaRecorder.state === "inactive" &&
-      context.state !== "closed"
-    ) {
+    }
+  }, [analyser]);
+
+  useEffect(() => {
+    if (context.state !== "closed") {
       context.close();
     }
-  }, [analyser, context.state]);
+  }, []);
 
   const processFrequencyData = (data: Uint8Array): void => {
     if (!canvasRef.current) return;
