@@ -132,8 +132,10 @@ const LiveAudioVisualizer: (props: Props) => ReactElement = ({
   }, [analyser, context.state]);
 
   useEffect(() => {
-    if (context.state !== "closed") {
-      context.close();
+    return () => {
+      if (context.state !== "closed") {
+        context.close();
+      }
     }
   }, []);
 
