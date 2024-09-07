@@ -89,21 +89,31 @@ const LiveAudioVisualizer: (props: Props) => ReactElement = ({
   minDecibels = -90,
   smoothingTimeConstant = 0.4,
 }: Props) => {
-  const [context] = useState(() => new AudioContext());
+  const [context, setContext] = useState<AudioContext>();
+  const [audioSource, setAudioSource] = useState<MediaStreamAudioSourceNode>();
   const [analyser, setAnalyser] = useState<AnalyserNode>();
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     if (!mediaRecorder.stream) return;
 
-    const analyserNode = context.createAnalyser();
+    const ctx = new AudioContext();
+    const analyserNode = ctx.createAnalyser();
     setAnalyser(analyserNode);
     analyserNode.fftSize = fftSize;
     analyserNode.minDecibels = minDecibels;
     analyserNode.maxDecibels = maxDecibels;
     analyserNode.smoothingTimeConstant = smoothingTimeConstant;
-    const source = context.createMediaStreamSource(mediaRecorder.stream);
+    const source = ctx.createMediaStreamSource(mediaRecorder.stream);
     source.connect(analyserNode);
+    setContext(ctx);
+    setAudioSource(source);
+
+    return () => {
+      source.disconnect();
+      analyserNode.disconnect();
+      ctx.state !== "closed" && ctx.close();
+    };
   }, [mediaRecorder.stream]);
 
   useEffect(() => {
@@ -113,7 +123,7 @@ const LiveAudioVisualizer: (props: Props) => ReactElement = ({
   }, [analyser, mediaRecorder.state]);
 
   const report = useCallback(() => {
-    if (!analyser) return;
+    if (!analyser || !context) return;
 
     const data = new Uint8Array(analyser?.frequencyBinCount);
 
@@ -129,14 +139,16 @@ const LiveAudioVisualizer: (props: Props) => ReactElement = ({
     ) {
       context.close();
     }
-  }, [analyser, context.state]);
+  }, [analyser, context?.state]);
 
   useEffect(() => {
     return () => {
-      if (context.state !== "closed") {
+      if (context && context.state !== "closed") {
         context.close();
       }
-    }
+      audioSource?.disconnect();
+      analyser?.disconnect();
+    };
   }, []);
 
   const processFrequencyData = (data: Uint8Array): void => {
