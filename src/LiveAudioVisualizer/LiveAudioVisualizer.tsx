@@ -131,6 +131,14 @@ const LiveAudioVisualizer: (props: Props) => ReactElement = ({
     }
   }, [analyser, context.state]);
 
+  useEffect(() => {
+    return () => {
+      if (context.state !== "closed") {
+        context.close();
+      }
+    }
+  }, []);
+
   const processFrequencyData = (data: Uint8Array): void => {
     if (!canvasRef.current) return;
 
