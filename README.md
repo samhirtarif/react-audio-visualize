@@ -96,6 +96,7 @@ const Visualizer = () => {
 | **`maxDecibels`** |  A double, representing the maximum decibel value for scaling the FFT analysis data. For more [details](https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/maxDecibels) | `-10` | Yes |
 | **`minDecibels`** |  A double, representing the minimum decibel value for scaling the FFT analysis data, where 0 dB is the loudest possible sound. For more [details](https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/minDecibels) | `-90` | Yes |
 | **`smoothingTimeConstant`** |  A double within the range 0 to 1 (0 meaning no time averaging). For more [details](https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/smoothingTimeConstant) | `0.4` | Yes |
+| **`style`** |  Custom styles that can be passed to the visualization canvas | N/A | Yes |
 
 
 
