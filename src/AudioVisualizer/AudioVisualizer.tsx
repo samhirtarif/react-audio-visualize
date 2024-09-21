@@ -50,7 +50,7 @@ interface Props {
    */
   currentTime?: number;
   /**
-   * Custome styles that can be passed to the visualization canvas
+   * Custom styles that can be passed to the visualization canvas
    */
   style?: React.CSSProperties;
   /**

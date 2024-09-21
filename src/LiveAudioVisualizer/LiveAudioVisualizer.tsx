@@ -74,6 +74,10 @@ export interface Props {
    * Default: `0.4`
    */
   smoothingTimeConstant?: number;
+  /**
+   * Custom styles that can be passed to the visualization canvas
+   */
+  style?: React.CSSProperties;
 }
 
 const LiveAudioVisualizer: (props: Props) => ReactElement = ({
@@ -88,6 +92,7 @@ const LiveAudioVisualizer: (props: Props) => ReactElement = ({
   maxDecibels = -10,
   minDecibels = -90,
   smoothingTimeConstant = 0.4,
+  style,
 }: Props) => {
   const [context, setContext] = useState<AudioContext>();
   const [audioSource, setAudioSource] = useState<MediaStreamAudioSourceNode>();
@@ -177,6 +182,7 @@ const LiveAudioVisualizer: (props: Props) => ReactElement = ({
       height={height}
       style={{
         aspectRatio: "unset",
+        ...style,
       }}
     />
   );
