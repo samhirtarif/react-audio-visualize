@@ -74,6 +74,12 @@ export interface Props {
    * Default: `0.4`
    */
   smoothingTimeConstant?: number;
+  /**
+   * Sample rate of the internal AudioContext. Should be the same as the AudioContext associated with the media recorder.
+   * For more details {@link https://developer.mozilla.org/en-US/docs/Web/API/AudioContext MDN AudioContext}
+   * Default: 44100
+   */
+  sampleRate?: number;
 }
 
 const LiveAudioVisualizer: (props: Props) => ReactElement = ({
@@ -88,6 +94,7 @@ const LiveAudioVisualizer: (props: Props) => ReactElement = ({
   maxDecibels = -10,
   minDecibels = -90,
   smoothingTimeConstant = 0.4,
+  sampleRate = 44100,
 }: Props) => {
   const [context, setContext] = useState<AudioContext>();
   const [audioSource, setAudioSource] = useState<MediaStreamAudioSourceNode>();
@@ -97,7 +104,7 @@ const LiveAudioVisualizer: (props: Props) => ReactElement = ({
   useEffect(() => {
     if (!mediaRecorder.stream) return;
 
-    const ctx = new AudioContext();
+    const ctx = new AudioContext({ sampleRate });
     const analyserNode = ctx.createAnalyser();
     setAnalyser(analyserNode);
     analyserNode.fftSize = fftSize;
