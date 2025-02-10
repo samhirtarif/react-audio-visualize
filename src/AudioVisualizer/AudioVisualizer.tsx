@@ -3,8 +3,6 @@ import {
   useState,
   forwardRef,
   type ForwardedRef,
-  type ForwardRefExoticComponent,
-  type RefAttributes,
   useImperativeHandle,
   useEffect,
 } from "react";
@@ -59,9 +57,7 @@ interface Props {
   ref?: React.ForwardedRef<HTMLCanvasElement>;
 }
 
-const AudioVisualizer: ForwardRefExoticComponent<
-  Props & RefAttributes<HTMLCanvasElement>
-> = forwardRef(
+const AudioVisualizer = forwardRef<HTMLCanvasElement, Props>(
   (
     {
       blob,
